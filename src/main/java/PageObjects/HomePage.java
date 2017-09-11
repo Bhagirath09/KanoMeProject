@@ -16,6 +16,7 @@ public class HomePage extends Utils {
         driver.get("https://kano.me");
     }
 
+    //click on computer kit bundle
     public void clickOnComputerKitBundleFromHomepage(){
 
         scrollPage(0, 250);
