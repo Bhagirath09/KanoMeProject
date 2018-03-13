@@ -5,21 +5,22 @@ import org.openqa.selenium.By;
 
 public class CartPage extends Utils {
 
-//    private By _productTitleInCart = By.xpath("//div[@class=\"CartPage-itemInfo\"]/h3/a");
-    private By _productTitleInCart = By.linkText("Computer Kit Bundle");
+    private By _productTitleInCart = By.xpath(".//*[@class='CartPage-item']/td[2]/div/h3/a");
+    private By _productPriceInCart = By.xpath(".//*[@class='CartPage-item']/td[3]/div");
 
-    private By _productPriceInCart = By.xpath("//td[@class=\"CartPage-tableCell--price\"]/div");
 
     public String productTitleInCart, productPriceInCart;
 
     public void computerBundleKitTitleAndPriceInCart(){
 
         productTitleInCart = getText(_productTitleInCart);
-        System.out.println(productTitleInCart);
+        System.out.println("cart title==> "+productTitleInCart);
 
         productPriceInCart = getText(_productPriceInCart);
+        System.out.println("cart price==> "+productPriceInCart);
+
         productPriceInCart = productPriceInCart.substring(1);
-        System.out.println(productPriceInCart);
+        System.out.println("cart price2==> "+productPriceInCart);
 
     }
 }

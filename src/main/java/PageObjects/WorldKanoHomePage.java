@@ -25,7 +25,7 @@ public class WorldKanoHomePage extends Utils {
     }
 
     public void clickOnIWantSuperPower(){
-        myClick(_iWantSuperPowerElement);
+        click(_iWantSuperPowerElement);
     }
 
     public void getTextOfHeaderMenus(){

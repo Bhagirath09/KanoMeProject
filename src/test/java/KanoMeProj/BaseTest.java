@@ -26,12 +26,13 @@ public class BaseTest extends Utils {
     public void openBrowser( ){
 
 //        driver = new FirefoxDriver();
-        System.setProperty("webdriver.chrome.driver", "C:\\Soft\\chromedriver-2.30.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Soft\\chromedriver-2.35.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-popup-blocking");
         options.addArguments("chrome.switches","--disable-extensions");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
@@ -60,7 +61,7 @@ public class BaseTest extends Utils {
             }
         }
         // close application
-        driver.quit();
+//        driver.quit();
     }
 
 }

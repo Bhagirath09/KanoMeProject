@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Utils extends BasePage {
 
-    public static void myClick(By by) {
+    public static void click(By by) {
         driver.findElement(by).click();
     }
 

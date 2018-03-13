@@ -7,11 +7,25 @@ import java.awt.*;
 
 public class TestSuite extends BaseTest {
 
+    @Test
+    public void m1(){
+
+
+    }
+
 
 @Test
 public void addAComputerKitBundleAndCheckThatItIsCorrectlyInBasketWithCorrectInformation(){
         //loading homepage
         homePage.navigateToKanoMeHomepage();
+
+        //change country to US
+        homePage.changeCountryFromHomepage("UK");
+
+        try {
+        homePage.clickContinueToUKStorePopUp();
+        } catch (Exception e){}
+
 
         //click on Computer Kit Bundle
         homePage.clickOnComputerKitBundleFromHomepage();
@@ -19,14 +33,18 @@ public void addAComputerKitBundleAndCheckThatItIsCorrectlyInBasketWithCorrectInf
         //get text of product title and price
         computerKitBundle.computerKitBundleInformationTitleAndPrice();
 
-        //click on Buy Now
-        computerKitBundle.clickComputerKitBundleBuyNow();
+        //click on order
+        computerKitBundle.clickComputerKitBundleOrderNow();
+
+        //click on order in pop up
+        computerKitBundle.clickComputerKitBundleOrderInPopUp();
 
         //get text of product title and price from Basket
         cartPage.computerBundleKitTitleAndPriceInCart();
 
         //Assert product title
-        Assert.assertEquals(computerKitBundle.productTitleInComputerKitBundle, cartPage.productTitleInCart, "Product's title is not matching in Baseket");
+//        Assert.assertEquals(computerKitBundle.productTitleInComputerKitBundle, cartPage.productTitleInCart, "Product's title is not matching in Baseket");
+        Assert.assertTrue(cartPage.productTitleInCart.contains("Complete"));
 
         //Assert product price
         Assert.assertEquals(computerKitBundle.productPriceInComputerKitBundle, cartPage.productPriceInCart, "Product's price is not matching in Baseket");
@@ -38,7 +56,11 @@ public void changeCountryAndAddAComputerKitBundleAndCheckThatItIsCorrectlyInBask
     homePage.navigateToKanoMeHomepage();
 
     //change country to US
-    homePage.changeCountryFromHomepage();
+    homePage.changeCountryFromHomepage("US");
+
+    try {
+        homePage.clickContinueToUKStorePopUp();
+    } catch (Exception e){}
 
     //click on Computer Kit Bundle
     homePage.clickOnComputerKitBundleFromHomepageUS();
@@ -46,8 +68,12 @@ public void changeCountryAndAddAComputerKitBundleAndCheckThatItIsCorrectlyInBask
     //get text of product title and price
     computerKitBundle.computerKitBundleInformationTitleAndPrice();
 
+    try {
+        homePage.clickContinueToUKStorePopUp();
+    } catch (Exception e){}
+
     //click on Buy Now
-    computerKitBundle.clickComputerKitBundleBuyNow();
+    computerKitBundle.clickComputerKitBundleOrderNow();
 
     //get text of product title and price from Basket
     cartPage.computerBundleKitTitleAndPriceInCart();
@@ -70,9 +96,9 @@ public void inWorldKanoMeProjectsCheckTheHeaderMenuIsCorrectWithWorldMakeShop(){
     worldKanoHomePage.getTextOfHeaderMenus();
 
     //Assert text of menus
-    Assert.assertTrue(worldKanoHomePage.headerMenu.contains("World") &&
-                          worldKanoHomePage.headerMenu.contains("Make") &&
-                          worldKanoHomePage.headerMenu.contains("Shop"),
+    Assert.assertTrue(worldKanoHomePage.headerMenu.contains("Make") &&
+                          worldKanoHomePage.headerMenu.contains("learn") &&
+                          worldKanoHomePage.headerMenu.contains("play"),
                          "Menus in header are not correct");
 
 }
